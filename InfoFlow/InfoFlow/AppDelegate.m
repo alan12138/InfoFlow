@@ -20,7 +20,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = [[APMyFeedViewController alloc] init];
+    
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[APMyFeedViewController alloc] init]];
     return YES;
 }
 

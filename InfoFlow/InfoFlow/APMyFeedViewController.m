@@ -10,14 +10,16 @@
 #import "APMyFeedTableViewCell.h"
 #import "APMyFeed.h"
 #import "UITableViewCell+ATCalcCellHeight.h"
-#import "HZPhotoBrowser.h"
+#import "MWPhotoBrowser.h"
+#import "APMyFeedContentImage.h"
 #define MAS_SHORTHAND_GLOBALS //使用全局宏定义(需要放在.pch文件中)，可以使equalTo- 等效于mas_equalTo
 #define MAS_SHORTHAND //使用全局宏定义(需要放在.pch文件中), 可以在调用masonry方法的时候不使用mas_前缀
 #import "Masonry.h"
 
-@interface APMyFeedViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface APMyFeedViewController ()<UITableViewDelegate,UITableViewDataSource,MWPhotoBrowserDelegate>
 @property (nonatomic, weak) UITableView *mainTableView;
 @property (nonatomic, strong) NSMutableArray *feeds;
+@property (nonatomic, strong) NSMutableArray *photos;
 @end
 
 @implementation APMyFeedViewController
@@ -41,15 +43,45 @@
         myFeed.level = @"等级1";
         if (i % 3 == 0) {
             myFeed.content = @"国服在线接单！今日特价！#王者高校争霸赛#";
-            myFeed.contentImages = [NSMutableArray array];
+            APMyFeedContentImage *image1 = [[APMyFeedContentImage alloc] init];
+            image1.imageUrlStr = @"https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=381f7e282b9759ee555066cb82fa434e/0dd7912397dda1449dd17697bfb7d0a20cf4863e.jpg";
+            image1.videoUrlStr = @"https://bpic.588ku.com/video_listen/588ku_preview/18/02/09/13/46/03/84/video5a7d359bc470b.mp4";
+            myFeed.contentImages = [NSMutableArray arrayWithObjects:image1, nil];
         }
         if (i % 3 == 1) {
             myFeed.content = @"来来来！一起上车！#王者高校争霸赛#";
-            myFeed.contentImages = [NSMutableArray arrayWithObjects:@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg", nil];
+            APMyFeedContentImage *image1 = [[APMyFeedContentImage alloc] init];
+            image1.imageUrlStr = @"https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=381f7e282b9759ee555066cb82fa434e/0dd7912397dda1449dd17697bfb7d0a20cf4863e.jpg";
+            image1.videoUrlStr = @"https://bpic.588ku.com/video_listen/588ku_preview/18/02/09/13/46/03/84/video5a7d359bc470b.mp4";
+            APMyFeedContentImage *image2 = [[APMyFeedContentImage alloc] init];
+            image2.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            APMyFeedContentImage *image3 = [[APMyFeedContentImage alloc] init];
+            image3.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            APMyFeedContentImage *image4 = [[APMyFeedContentImage alloc] init];
+            image4.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            myFeed.contentImages = [NSMutableArray arrayWithObjects:image1,image2,image3,image4, nil];
         }
         if (i % 3 == 2) {
             myFeed.content = @"关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象的生命周期是怎样的，什么时候被释放，什么时候被移除？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象的生命周期是怎样的，什么时候被释放，什么时候被移除？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象的生命周期是怎样的，什么时候被释放，什么时候被移除？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象的生命周期是怎样的，什么时候被释放，什么时候被移除？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象的生命周期是怎样的，什么时候被释放，什么时候被移除？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？关联对象的生命周期是怎样的，什么时候被释放，什么时候被移除？关联对象被存储在什么地方，是不是存放在被关联对象本身的内存中？关联对象的五种关联策略有什么区别，有什么坑？";
-                myFeed.contentImages = [NSMutableArray arrayWithObjects:@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg", nil];
+            APMyFeedContentImage *image1 = [[APMyFeedContentImage alloc] init];
+            image1.imageUrlStr = @"https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=381f7e282b9759ee555066cb82fa434e/0dd7912397dda1449dd17697bfb7d0a20cf4863e.jpg";
+            image1.videoUrlStr = @"https://bpic.588ku.com/video_listen/588ku_preview/18/02/09/13/46/03/84/video5a7d359bc470b.mp4";
+            APMyFeedContentImage *image2 = [[APMyFeedContentImage alloc] init];
+            image2.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            APMyFeedContentImage *image3 = [[APMyFeedContentImage alloc] init];
+            image3.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            APMyFeedContentImage *image4 = [[APMyFeedContentImage alloc] init];
+            image4.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            APMyFeedContentImage *image5 = [[APMyFeedContentImage alloc] init];
+            image5.imageUrlStr = @"https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=381f7e282b9759ee555066cb82fa434e/0dd7912397dda1449dd17697bfb7d0a20cf4863e.jpg";
+            image5.videoUrlStr = @"https://bpic.588ku.com/video_listen/588ku_preview/18/02/09/13/46/03/84/video5a7d359bc470b.mp4";
+            APMyFeedContentImage *image6 = [[APMyFeedContentImage alloc] init];
+            image6.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            APMyFeedContentImage *image7 = [[APMyFeedContentImage alloc] init];
+            image7.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            APMyFeedContentImage *image8 = [[APMyFeedContentImage alloc] init];
+            image8.imageUrlStr = @"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2118739199,3378602431&fm=26&gp=0.jpg";
+            myFeed.contentImages = [NSMutableArray arrayWithObjects:image1,image2,image3,image4,image5,image6,image7,image8, nil];
         }
         
         myFeed.time = @"5分钟前";
@@ -90,13 +122,42 @@
         [tableView reloadRowsAtIndexPaths:@[indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
     };
+    __weak typeof(self) weakSelf = self;
     cell.previewPhotosBlock = ^(NSMutableArray *icons, int i) {
-        HZPhotoBrowser *browser = [[HZPhotoBrowser alloc] init];
-        browser.isFullWidthForLandScape = YES;
-        browser.isNeedLandscape = YES;
-        browser.currentImageIndex = i;
-        browser.imageArray = icons;
-        [browser show];
+        NSMutableArray *photos = [NSMutableArray array];
+        weakSelf.photos = photos;
+        for (APMyFeedContentImage *myFeedContentImage in icons) {
+            if(myFeedContentImage.videoUrlStr != nil) {
+                MWPhoto *video = [MWPhoto photoWithURL:[NSURL URLWithString:myFeedContentImage.imageUrlStr]];
+                video.videoURL = [[NSURL alloc] initWithString:myFeedContentImage.videoUrlStr];
+                [photos addObject:video];
+            } else {
+                [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:myFeedContentImage.imageUrlStr]]];
+            }
+        }
+//        NSMutableArray *thumbs = [[NSMutableArray alloc] init];
+//        MWPhoto *photo, *thumb;
+//        self.thumbs = thumbs;
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+        browser.displaySelectionButtons = NO;
+        browser.alwaysShowControls = NO;
+        browser.zoomPhotosToFill = YES;
+        browser.enableGrid = YES;
+        browser.startOnGrid = NO;
+        browser.enableSwipeToDismiss = YES;
+        browser.autoPlayOnAppear = NO;
+        
+        browser.displayActionButton =NO;//分享按钮,默认是
+        browser.displayNavArrows = NO;//左右分页切换,默认否<屏幕下方的左右角标>
+        [browser setCurrentPhotoIndex:i];
+
+        browser.customImageSelectedIconName = @"ImageSelected.png";
+        browser.customImageSelectedSmallIconName = @"ImageSelectedSmall.png";
+
+        [weakSelf.navigationController pushViewController:browser animated:YES];
+        
+        [browser showNextPhotoAnimated:YES];
+        [browser showPreviousPhotoAnimated:YES];
     };
     return cell;
 }
@@ -126,6 +187,17 @@
                  };
         
     }];
-    
+}
+
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return self.photos.count;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < self.photos.count) {
+        return [self.photos objectAtIndex:index];
+    }
+    return nil;
 }
 @end

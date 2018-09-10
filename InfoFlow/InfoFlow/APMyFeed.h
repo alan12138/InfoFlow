@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class APMyFeedContentImage;
 @interface APMyFeed : NSObject
 @property (nonatomic, copy) NSString *headIcon;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *sex;
 @property (nonatomic, copy) NSString *level;
 @property (nonatomic, copy) NSString *content;
-@property (nonatomic, strong) NSMutableArray *contentImages;
+@property (nonatomic, strong) NSMutableArray<APMyFeedContentImage *> *contentImages;
 @property (nonatomic, copy) NSString *time;
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, copy) NSString *comment;

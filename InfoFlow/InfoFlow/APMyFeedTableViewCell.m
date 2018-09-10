@@ -9,6 +9,7 @@
 #import "APMyFeedTableViewCell.h"
 #import "UIButton+webCache.h"
 #import "APMyFeed.h"
+#import "APMyFeedContentImage.h"
 #define MAS_SHORTHAND_GLOBALS //使用全局宏定义(需要放在.pch文件中)，可以使equalTo- 等效于mas_equalTo
 #define MAS_SHORTHAND //使用全局宏定义(需要放在.pch文件中), 可以在调用masonry方法的时候不使用mas_前缀
 #import "Masonry.h"
@@ -152,7 +153,16 @@
             UIButton *btn = self.contentImageBtns[i];
             btn.tag = CONTENT_BTN_TAG_CONST + i;
             [btn addTarget:self action:@selector(contentImageClick:) forControlEvents:UIControlEventTouchUpInside];
-            [btn sd_setImageWithURL:[NSURL URLWithString:myFeed.contentImages[i]] forState:UIControlStateNormal];
+
+            NSString *imageStr = [(APMyFeedContentImage *)(myFeed.contentImages[i]) imageUrlStr];
+            NSString *videoStr = [(APMyFeedContentImage *)(myFeed.contentImages[i]) videoUrlStr];
+            if (videoStr) {
+                [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:imageStr] forState:UIControlStateNormal];
+                [btn setImage:[UIImage imageNamed:@"动态视频播放"] forState:UIControlStateNormal];
+            } else {
+                [btn sd_setImageWithURL:[NSURL URLWithString:imageStr] forState:UIControlStateNormal];
+            }
+
             if (i == self.contentImageBtns.count - 1) {
                 [self.timeLabel remakeConstraints:^(MASConstraintMaker *make) {
                     make.left.equalTo(self).offset(10);
