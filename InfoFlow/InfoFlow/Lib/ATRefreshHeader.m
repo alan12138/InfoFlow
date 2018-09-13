@@ -41,7 +41,7 @@
     self.label = label;
 
     // logo
-    UIImageView *loadingView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"上拉刷新"]];
+    UIImageView *loadingView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"下拉刷新"]];
     [self addSubview:loadingView];
     self.loadingView = loadingView;
 }
