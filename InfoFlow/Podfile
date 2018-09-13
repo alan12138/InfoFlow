@@ -20,4 +20,5 @@ target 'InfoFlow' do
 	pod "MWPhotoBrowser"
     pod "TZImagePickerController"
     pod "FSTextView"
+    pod "MJRefresh"
 end

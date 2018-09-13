@@ -2,6 +2,7 @@ PODS:
   - DACircularProgress (2.3.1)
   - FSTextView (1.8)
   - MBProgressHUD (0.9.2)
+  - MJRefresh (3.1.15.7)
   - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
@@ -13,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - FSTextView
+  - MJRefresh
   - MWPhotoBrowser
   - TZImagePickerController
 
@@ -21,6 +23,7 @@ SPEC REPOS:
     - DACircularProgress
     - FSTextView
     - MBProgressHUD
+    - MJRefresh
     - MWPhotoBrowser
     - SDWebImage
     - TZImagePickerController
@@ -29,10 +32,11 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FSTextView: 9e2ca07bb6bb0fb7e77b49b2717adf81f3c620b5
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TZImagePickerController: 534fa8d35d555015c013209ed32e67c8a3c4e701
 
-PODFILE CHECKSUM: a12a89090f8d8a0c57e4d3673f29d68be8a1c81c
+PODFILE CHECKSUM: 8082cadf6503f092ae8b59b337bba629850f0264
 
 COCOAPODS: 1.5.3

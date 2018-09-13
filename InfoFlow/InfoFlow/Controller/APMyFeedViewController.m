@@ -14,6 +14,7 @@
 #import "APMyFeedContentImage.h"
 #import "APAddFeedViewController.h"
 #import "CommonUtils.h"
+#import "ATRefreshHeader.h"
 
 #define MAS_SHORTHAND_GLOBALS //使用全局宏定义(需要放在.pch文件中)，可以使equalTo- 等效于mas_equalTo
 #define MAS_SHORTHAND //使用全局宏定义(需要放在.pch文件中), 可以在调用masonry方法的时候不使用mas_前缀
@@ -34,8 +35,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonItemClick)];
 
     [self setupUI];
-    [self requestData];
+    [self startRefresh];
     
+}
+- (void)startRefresh {
+    self.mainTableView.mj_header = [ATRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
+    [self.mainTableView.mj_header beginRefreshing];
 }
 - (void)requestData {
     self.feeds = [NSMutableArray array];
@@ -94,6 +99,7 @@
         myFeed.expand = NO;
         [self.feeds addObject:myFeed];
         [self.mainTableView reloadData];
+        [self.mainTableView.mj_header endRefreshing];
     }
 }
 - (void)setupUI {

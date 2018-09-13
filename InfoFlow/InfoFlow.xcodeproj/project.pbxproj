@@ -18,6 +18,7 @@
 		0465F6EA2148E43D00E7095B /* APMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465F6E82148E43D00E7095B /* APMBProgressHUD.m */; };
 		0465F6ED2148E44B00E7095B /* AUMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465F6EB2148E44B00E7095B /* AUMBProgressHUD.m */; };
 		0465F6F02148EA9000E7095B /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465F6EF2148EA9000E7095B /* CommonUtils.m */; };
+		0486247F214A377400683188 /* ATRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0486247D214A377400683188 /* ATRefreshHeader.m */; };
 		048AB2ED214212EF0025D917 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 048AB2EC214212EF0025D917 /* AppDelegate.m */; };
 		048AB2F5214212F50025D917 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 048AB2F4214212F50025D917 /* Assets.xcassets */; };
 		048AB2F8214212F50025D917 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048AB2F6214212F50025D917 /* LaunchScreen.storyboard */; };
@@ -83,6 +84,8 @@
 		0465F6EC2148E44B00E7095B /* AUMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUMBProgressHUD.h; sourceTree = "<group>"; };
 		0465F6EE2148EA9000E7095B /* CommonUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		0465F6EF2148EA9000E7095B /* CommonUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		0486247D214A377400683188 /* ATRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRefreshHeader.m; sourceTree = "<group>"; };
+		0486247E214A377400683188 /* ATRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRefreshHeader.h; sourceTree = "<group>"; };
 		048AB2E8214212EF0025D917 /* InfoFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfoFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048AB2EB214212EF0025D917 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		048AB2EC214212EF0025D917 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 		048AB31D214213440025D917 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				0486247E214A377400683188 /* ATRefreshHeader.h */,
+				0486247D214A377400683188 /* ATRefreshHeader.m */,
 				0465F6EC2148E44B00E7095B /* AUMBProgressHUD.h */,
 				0465F6EB2148E44B00E7095B /* AUMBProgressHUD.m */,
 				0465F6E92148E43D00E7095B /* APMBProgressHUD.h */,
@@ -540,11 +545,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-InfoFlow/Pods-InfoFlow-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/MWPhotoBrowser/MWPhotoBrowser.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MWPhotoBrowser.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
 			);
@@ -567,6 +574,7 @@
 				0465F6E02148E28600E7095B /* APAddFeedView.m in Sources */,
 				0465F6E42148E28600E7095B /* APMyFeedContentImage.m in Sources */,
 				048AB36D2142135A0025D917 /* MASConstraintMaker.m in Sources */,
+				0486247F214A377400683188 /* ATRefreshHeader.m in Sources */,
 				048AB3702142135A0025D917 /* MASViewConstraint.m in Sources */,
 				0465F6E72148E3B100E7095B /* TZTestCell.m in Sources */,
 				048AB3732142135A0025D917 /* View+MASAdditions.m in Sources */,
